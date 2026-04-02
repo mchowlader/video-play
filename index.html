@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Video Showcase</title>
+    <meta name="description" content="A simple yet premium video playback page featuring a 300x250 showcase.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Video Showcase</h1>
+            <p>Experience the quality in a minimalist frame</p>
+        </header>
+
+        <section class="video-section">
+            <div class="video-wrapper">
+                <video id="main-video" autoplay muted loop playsinline controls>
+                    <source src="Final_300x250.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <footer>
+            <p>Ready for <a href="https://github.com/features/pages" target="_blank">GitHub Pages</a> deployment.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Optional: Interaction logger or player controller
+        const video = document.getElementById('main-video');
+        video.addEventListener('play', () => {
+            console.log('Video started playing...');
+        });
+    </script>
+</body>
+</html>
