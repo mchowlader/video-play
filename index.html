@@ -26,6 +26,9 @@
                     <source src="Final_300x250.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <div id="unmute-overlay" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 5px; z-index: 10;">
+                    🔈 Tap for Sound
+                </div>
             </div>
         </section>
 
@@ -35,10 +38,29 @@
     </div>
 
     <script>
-        // Optional: Interaction logger or player controller
         const video = document.getElementById('main-video');
+        const overlay = document.getElementById('unmute-overlay');
+
+        // Browsers block autoplay with sound. 
+        // This script unmutes the video on the first click.
+        function activateSound() {
+            video.muted = false;
+            overlay.style.display = 'none';
+            console.log('Sound activated!');
+            // Remove the event listeners after activation
+            document.removeEventListener('click', activateSound);
+        }
+
+        // Unmute when clicking the overlay or anywhere on the page
+        document.addEventListener('click', activateSound);
+
         video.addEventListener('play', () => {
             console.log('Video started playing...');
+        });
+
+        // Debugging for laptop (0:00 duration)
+        video.addEventListener('error', (e) => {
+            console.error('Video error detected. Try Ctrl+F5 or check codec support.', e);
         });
     </script>
 </body>
