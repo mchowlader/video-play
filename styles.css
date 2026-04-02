@@ -25,7 +25,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  padding: 20px;
 }
 
 .container {
@@ -34,6 +35,8 @@ body {
   align-items: center;
   gap: 2rem;
   z-index: 1;
+  width: 100%;
+  max-width: 500px;
 }
 
 .header {
@@ -46,6 +49,7 @@ body {
   font-weight: 700;
   background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
 }
@@ -58,7 +62,9 @@ body {
 .video-wrapper {
   position: relative;
   width: 300px;
-  height: 250px;
+  max-width: calc(100vw - 40px);
+  aspect-ratio: 300 / 250;
+  height: auto;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
@@ -132,10 +138,25 @@ video {
 
 /* Footer style */
 footer {
-  position: fixed;
-  bottom: 2rem;
+  position: relative;
+  margin-top: 3rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .container {
+    gap: 1.5rem;
+  }
+  
+  .video-wrapper {
+    width: 280px;
+  }
 }
 
 footer a {
