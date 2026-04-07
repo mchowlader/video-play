@@ -59,12 +59,13 @@ body {
   font-size: 1rem;
 }
 
+
+
 .video-wrapper {
   position: relative;
-  width: 300px;
+  width: 320px;
   max-width: calc(100vw - 40px);
-  aspect-ratio: 300 / 250;
-  height: auto;
+  height: 270px;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
@@ -80,6 +81,8 @@ body {
   box-shadow: 0 35px 60px -12px rgba(99, 102, 241, 0.25);
   border-color: rgba(99, 102, 241, 0.3);
 }
+
+
 
 video {
   width: 100%;
