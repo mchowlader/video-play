@@ -22,13 +22,21 @@
 
         <section class="video-section">
             <div class="video-wrapper">
-                <video id="main-video" autoplay muted loop playsinline controls controlsList="nofullscreen">
+                <video id="main-video" autoplay muted playsinline controls controlsList="nofullscreen">
                     <source src="Final_300x250.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div id="unmute-overlay"
                     style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 5px; z-index: 10;">
                     🔈 Tap for Sound
+                </div>
+                <div id="replay-overlay" class="hidden">
+                    <button id="replay-btn" class="replay-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+                        </svg>
+                        Play Again
+                    </button>
                 </div>
             </div>
         </section>
@@ -41,6 +49,8 @@
     <script>
         const video = document.getElementById('main-video');
         const overlay = document.getElementById('unmute-overlay');
+        const replayOverlay = document.getElementById('replay-overlay');
+        const replayBtn = document.getElementById('replay-btn');
 
         // Browsers block autoplay with sound. 
         // This script unmutes the video on the first click.
@@ -57,6 +67,18 @@
 
         video.addEventListener('play', () => {
             console.log('Video started playing...');
+            replayOverlay.classList.add('hidden');
+        });
+
+        video.addEventListener('ended', () => {
+            console.log('Video ended.');
+            replayOverlay.classList.remove('hidden');
+        });
+
+        replayBtn.addEventListener('click', () => {
+            video.currentTime = 0;
+            video.play();
+            replayOverlay.classList.add('hidden');
         });
 
         // Debugging for laptop (0:00 duration)
